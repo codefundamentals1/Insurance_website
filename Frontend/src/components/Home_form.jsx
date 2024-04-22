@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Image from '../Images/HomeBg.png';
-import { Link } from 'react-router-dom';
 
-const Home = () => {
+const Home_form = () => {
   const [formData, setFormData] = useState({
     registrationNumber: '',
     consumerMobileNumber: '',
@@ -94,15 +93,13 @@ const Home = () => {
           </label>
 
           {/* Apply button */}
-          <Link to='/policytable'>
           <button type="submit" className="bg-blue-500 text-white px-4 py-2 mt-4 w-full rounded hover:bg-blue-600 transition duration-300">
             Apply
           </button>
-          </Link>
         </div>
       </form>
     </div>
   );
 };
 
-export default Home;
+export default Home_form;
