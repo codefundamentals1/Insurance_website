@@ -152,7 +152,7 @@ export default function Footer() {
                                     clipRule="evenodd"
                                 />
                             </svg>
-                            <span className="sr-only">Dribbble account</span>
+                            <span className="sr-only"> account</span>
                         </Link>
                     </div>
                 </div>
