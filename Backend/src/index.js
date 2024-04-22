@@ -1,6 +1,7 @@
 const express = require('express')
 require('dotenv').config()
 const cors = require('cors')
+// const con = require('./db/config')
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.post('/signup', async(req, res) =>{
     res.send(data);
 
 })
+
 
 
 
