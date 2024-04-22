@@ -12,7 +12,9 @@ import Github from './components/Github.jsx'
 import Githubtwo, { githubInfoLoader } from './components/Githubtwo.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Form from './components/Formpage.jsx'
+import Signup from './components/Signup.jsx'
+
+
 
 
 
@@ -26,11 +28,10 @@ const router = createBrowserRouter(
       <Route path='github' element={<Github/>} />
       {/* different method to call api  */}
       <Route 
-      loader={githubInfoLoader}
+      loader={githubInfoLoader} 
       path='githubtwo' 
       element={<Githubtwo/>} />
-      <Route path='form' element={<Form/>} />
-      
+       <Route path='signup' element={<Signup/>} />
 
     
     </Route>
