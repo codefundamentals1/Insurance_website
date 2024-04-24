@@ -53,7 +53,7 @@ const Policies = () => {
   ];
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto m-4">
       <h1 className="text-2xl font-bold mb-4">Insurance Policies</h1>
 
       {/* Car Policies Table */}
@@ -67,7 +67,7 @@ const Policies = () => {
               <th className="border border-gray-200 px-4 py-2">Description</th>
               <th className="border border-gray-200 px-4 py-2">Type</th>
               <th className="border border-gray-200 px-4 py-2">Pricing</th>
-              <th className="border border-gray-200 px-4 py-2">Action</th>
+              {/* <th className="border border-gray-200 px-4 py-2">Action</th> */}
             </tr>
           </thead>
           <tbody>
@@ -78,7 +78,7 @@ const Policies = () => {
                 <td className="border border-gray-200 px-4 py-2">{Array.isArray(policy.description) ? policy.description.map((desc, index) => <p key={index}>{desc}</p>) : policy.description}</td>
                 <td className="border border-gray-200 px-4 py-2">{policy.type}</td>
                 <td className="border border-gray-200 px-4 py-2">{policy.pricing}</td>
-                <td className="border border-gray-200 px-4 py-2"><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">File a claim</button></td>
+                {/* <td className="border border-gray-200 px-4 py-2"><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">File a claim</button></td> */}
               </tr>
             ))}
           </tbody>
@@ -96,7 +96,7 @@ const Policies = () => {
               <th className="border border-gray-200 px-4 py-2">Description</th>
               <th className="border border-gray-200 px-4 py-2">Type</th>
               <th className="border border-gray-200 px-4 py-2">Pricing</th>
-              <th className="border border-gray-200 px-4 py-2">Action</th>
+              {/* <th className="border border-gray-200 px-4 py-2">Action</th> */}
             </tr>
           </thead>
           <tbody>
@@ -107,7 +107,7 @@ const Policies = () => {
                 <td className="border border-gray-200 px-4 py-2">{policy.description}</td>
                 <td className="border border-gray-200 px-4 py-2">{policy.type}</td>
                 <td className="border border-gray-200 px-4 py-2">{policy.pricing}</td>
-                <td className="border border-gray-200 px-4 py-2"><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">File a claim</button></td>
+                {/* <td className="border border-gray-200 px-4 py-2"><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">File a claim</button></td> */}
               </tr>
             ))}
           </tbody>
@@ -125,7 +125,7 @@ const Policies = () => {
               <th className="border border-gray-200 px-4 py-2">Description</th>
               <th className="border border-gray-200 px-4 py-2">Type</th>
               <th className="border border-gray-200 px-4 py-2">Pricing</th>
-              <th className="border border-gray-200 px-4 py-2">Action</th>
+              {/* <th className="border border-gray-200 px-4 py-2">Action</th> */}
             </tr>
           </thead>
           <tbody>
@@ -136,7 +136,7 @@ const Policies = () => {
                 <td className="border border-gray-200 px-4 py-2">{Array.isArray(policy.description) ? policy.description.map((desc, index) => <p key={index}>{desc}</p>) : policy.description}</td>
                 <td className="border border-gray-200 px-4 py-2">{policy.type}</td>
                 <td className="border border-gray-200 px-4 py-2">{policy.pricing}</td>
-                <td className="border border-gray-200 px-4 py-2"><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">File a claim</button></td>
+                {/* <td className="border border-gray-200 px-4 py-2"><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">File a claim</button></td> */}
               </tr>
             ))}
           </tbody>

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AgentLoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -12,71 +14,49 @@ const AgentLoginPage = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+ 
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Here you can implement your login logic for insurance agent
-    console.log('Username:', username);
-    console.log('Password:', password);
-    // Reset the input fields after submission
-    setUsername('');
-    setPassword('');
+    console.log('Logging in with:', { username, password });
+    console.warn(username, password);
+    let result=  await fetch('http://localhost:3000/agent/login',{
+      method: 'post',
+      body: JSON.stringify({ username,  password}),
+      headers:{
+        'Content-Type' : 'application/json'
+      },
+    })
+
+  
+    result = await result.json()
+    localStorage.setItem("user" , JSON.stringify(result))
+    console.warn(result)
+      setUsername('')
+    setPassword('')
+    let userItem = localStorage.getItem('user');
+    if(userItem) {
+      let userJson = JSON.parse(userItem);
+      if(userJson.message === 'agent Login successful') navigate("/agentlayout")
+    } 
   };
 
+  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Agent Login</h2>
+    <div className="container mx-auto mt-8 min-h-screen justify-items-center" >
+      <h1 className="text-2xl font-bold mb-4">Agentlogin </h1>
+      <form onSubmit={handleSubmit} className="max-w-sm">
+        <div className="mb-4">
+          <label htmlFor="username" className="block text-gray-700 font-semibold mb-2">Username</label>
+          <input type="text" id="username" value={username} onChange={handleUsernameChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required />
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <input type="hidden" name="remember" defaultValue="true" />
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="username" className="sr-only">Username</label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                autoComplete="username"
-                required
-                value={username}
-                onChange={handleUsernameChange}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Username"
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="sr-only">Password</label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                value={password}
-                onChange={handlePasswordChange}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-              />
-            </div>
-          </div>
-
-          <div>
-            <button
-              type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-              <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                <svg className="h-5 w-5 text-blue-500 group-hover:text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fillRule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                  <path fillRule="evenodd" d="M3 10a7 7 0 1114 0 7 7 0 01-14 0zm7-5a5 5 0 00-4.546 7.22l-4.223 4.223a1 1 0 101.414 1.414l4.222-4.222A5 5 0 1010 5z" clipRule="evenodd" />
-                </svg>
-              </span>
-              Login
-            </button>
-          </div>
-        </form>
-      </div>
+        <div className="mb-4">
+          <label htmlFor="password" className="block text-gray-700 font-semibold mb-2">Password</label>
+          <input type="password" id="password" value={password} onChange={handlePasswordChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required />
+        </div>
+       
+        <button type="submit" className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600">Login</button>
+       
+      </form>
     </div>
   );
 };

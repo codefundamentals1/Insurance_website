@@ -1,11 +1,11 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 //this is the syntax to connect my sqll
 const con = mysql.createConnection({
   host: 'localhost',
-  user: "Anish",
-  password: "",
-  database: "test",
+  user: "raja",
+  password: "Anish@123",
+  database: "users",
 });
 
 con.connect((err) => {
@@ -15,5 +15,6 @@ con.connect((err) => {
     console.log("conected");
   }
 });
+
 
 module.exports = con;

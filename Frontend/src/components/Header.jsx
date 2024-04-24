@@ -3,6 +3,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
+const auth = localStorage.getItem("user");
 
 
 export default function Header() {
@@ -18,14 +19,17 @@ export default function Header() {
                         />
                     </Link>
                     <div className="flex items-center lg:order-2">
-                        <Link
-                            to="/Login"
+                      
+                        {/* <Link
+                            to=""
                             className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
                         >
                             Log in
-                        </Link>
+                        </Link> */}
+
+
                         <Link
-                            to="#"
+                            to="/Login"
                             className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
                         >
                             Get started
@@ -66,26 +70,8 @@ export default function Header() {
                                     Contact
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink
-                                    to="/github"
-                                    className={({ isActive }) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-700" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                                    }
-                                >
-                                    Github
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to="/githubtwo"
-                                    className={({ isActive }) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-700" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                                    }
-                                >
-                                    Github_two
-                                </NavLink>
-                            </li>
+                         
+                           
 
                             <li>
                                 <NavLink
@@ -97,16 +83,7 @@ export default function Header() {
                                     Policies
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink
-                                    to="/Claim"
-                                    className={({ isActive }) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-700" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                                    }
-                                >
-                                    Claim
-                                </NavLink>
-                            </li>
+                          
 
 
                         </ul>
