@@ -28,6 +28,8 @@ app.use('/customer', require('./routes/Customer.route'));
 app.use('/agent', require('./routes/Agent.route'));
 app.use('/inspector', require('./routes/Inspector.route'));
 
+app.use('/userlayout', require('./routes/Userlayout.route'));
+
 
 const port = process.env.PORT ;
  

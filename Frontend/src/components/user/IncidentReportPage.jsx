@@ -25,7 +25,7 @@ const IncidentReportPage = () => {
   ];
 
   const [incidentReports, setIncidentReports] = useState(tempData);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
 
 //   useEffect(() => {

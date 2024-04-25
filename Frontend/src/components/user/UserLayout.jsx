@@ -10,7 +10,7 @@ const UserLayout = () => {
   return (
     <>
 
-    <div className='w-screen h-auto'>
+    <div className='w-screen min-h-screen'>
     <Sidepanel></Sidepanel>
     
     <Outlet></Outlet>

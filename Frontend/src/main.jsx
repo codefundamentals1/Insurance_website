@@ -92,7 +92,7 @@ const router = createBrowserRouter(
         <Route path="" element={<Customer_form />} />
         <Route path="Customerform" element={<Customer_form />} />
         <Route path="incidentform" element={<Incident_form />} />
-        <Route path="apllication" element={<ApplicationRead />} />
+        <Route path="application" element={<ApplicationRead />} />
         <Route path="customer_read" element={<CustomerPage />} />
         <Route path="quote_read" element={<QuotePage />} />
         <Route path="insurance_read" element={<InsurancePolicyPage />} />
@@ -115,6 +115,7 @@ const router = createBrowserRouter(
       {/* Damage inspector path */}
 
       <Route path="inspectorlayout" element={<DamageInspectorLayout />}>
+      <Route path="" element={<InsurancePolicyPage1 />}/>
         <Route path="insuracepolicypage1" element={<InsurancePolicyPage1 />}/>
         <Route path="incident1" element={<IncidentPage1 />}/>
         <Route path="productpage1" element={<ProductPage1 />}/>

@@ -7,9 +7,11 @@ import { Outlet } from 'react-router-dom'
 const DamageInspectorLayout = () => {
   return (
     <>
+    <div className='min-h-screen'>
     <Sidepanel_in/>
     
     <Outlet></Outlet>
+    </div>  
     </>
   )
 }

@@ -35,7 +35,12 @@ const DamageInspectorLoginPage = () => {
     let userItem = localStorage.getItem('user');
     if(userItem) {
       let userJson = JSON.parse(userItem);
-      if(userJson.message === 'inspector Login successful') navigate("/inspectorlayout")
+      if(userJson.message === 'inspector Login successful'){ navigate("/inspectorlayout")}
+      else{
+        alert("invalid details ")}
+        
+      
+      
     } 
   };
 

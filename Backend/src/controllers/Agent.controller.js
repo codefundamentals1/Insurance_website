@@ -1,7 +1,7 @@
 const mysql = require("mysql2");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { promisify } = require("util");
+const { promisify } = require("util");  
 
 const db = require('../db/config')
 

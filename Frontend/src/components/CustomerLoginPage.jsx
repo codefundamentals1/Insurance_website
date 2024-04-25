@@ -38,6 +38,8 @@ const CustomerLoginPage = () => {
     if(userItem) {
       let userJson = JSON.parse(userItem);
       if(userJson.message === 'Login successful') navigate("/userlayout")
+      else{
+    alert("invalid details ")}
     } 
     
     

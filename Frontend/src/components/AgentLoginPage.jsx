@@ -37,6 +37,10 @@ const AgentLoginPage = () => {
     if(userItem) {
       let userJson = JSON.parse(userItem);
       if(userJson.message === 'agent Login successful') navigate("/agentlayout")
+      else{
+        alert("invalid details ")}
+        
+      
     } 
   };
 

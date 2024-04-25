@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'
 
 const CustomerPage = () => {
   const tempdata = [
@@ -29,7 +30,9 @@ const CustomerPage = () => {
   ];
 
   const [customers, setCustomers] = useState(tempdata);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+
 
   return (
     <div className="container mx-auto mt-10">

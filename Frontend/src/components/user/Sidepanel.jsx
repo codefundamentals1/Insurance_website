@@ -12,6 +12,7 @@ function Sidepanel() {
 
   return (
     <>
+  
       <Button variant="primary" onClick={handleShow}>
        Drawer
       </Button>
@@ -36,7 +37,7 @@ function Sidepanel() {
             </Link>
 
 
-            <Link to="/userlayout/apllication">
+            <Link to="/userlayout/application">
             <li className="py-1">
               <a href="#" className="text-gray-800 hover:text-blue-500">Application</a>
             </li>
@@ -133,7 +134,7 @@ function Sidepanel() {
 
         </Offcanvas.Body>
       </Offcanvas>
-
+     
       
     </>
   );
