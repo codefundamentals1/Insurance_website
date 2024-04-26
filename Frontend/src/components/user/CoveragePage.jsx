@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 const CoveragePage = () => {
@@ -28,14 +29,19 @@ const CoveragePage = () => {
   ];
   const [coverages, setCoverages] = useState(tempData);
   const [loading, setLoading] = useState(true);
+  
+  useEffect( ()=> {
+    axios.get('http://localhost:3000/userlayout/CoverageP')
+    .then((response) => {
+      setCoverages(response.data)
+      setLoading(false)
 
-//   useEffect(() => {
-//     // Simulated API call
-//     setTimeout(() => {
-//       setCoverages(tempData);
-//       setLoading(false);
-//     }, 1000);
-//   }, []);
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , [])
 
   return (
     <div className="container mx-auto mt-10">

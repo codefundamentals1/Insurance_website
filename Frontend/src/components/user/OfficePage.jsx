@@ -31,21 +31,20 @@ export default function OfficePage() {
   const [offices, setOffices] = useState(temp);
 
 
-  // Fetch data from the backend API
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         // Fetch data from your backend API endpoint
-//         const response = await fetch('your-backend-api-url');
-//         const data = await response.json();
-//         setOffices(data);
-//       } catch (error) {
-//         console.error('Error fetching data:', error);
-//       }
-//     };
 
-//     fetchData();
-//   }, []);
+  useEffect( ()=> {
+    axios.get('http://localhost:3000/userlayout/officepage')
+    .then((response) => {
+      setOffices(response.data)
+      setLoading(false)
+
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , [])
+  
 
   return (
     <div className="container mx-auto">

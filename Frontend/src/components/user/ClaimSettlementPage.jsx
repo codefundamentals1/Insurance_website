@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const ClaimSettlementPage = () => {
 
@@ -33,24 +34,22 @@ const ClaimSettlementPage = () => {
         }
       ]
       
-  const [claimSettlements, setClaimSettlements] = useState(tempdata);
+  const [claimSettlements, setClaimSettlements] = useState([]);
   const [loading, setLoading] = useState(true);
+  
 
-//   useEffect(() => {
-//     const fetchClaimSettlements = async () => {
-//       try {
-//         // Fetch claim settlements data from the backend API
-//         const response = await fetch('backend-api-url/claim-settlements');
-//         const data = await response.json();
-//         setClaimSettlements(data);
-//         setLoading(false);
-//       } catch (error) {
-//         console.error('Error fetching claim settlements:', error);
-//       }
-//     };
+useEffect( ()=> {
+  axios.get('http://localhost:3000/userlayout/claimsettlement')
+  .then((response) => {
+    setClaimSettlements(response.data)
+    setLoading(false)
 
-//     fetchClaimSettlements();
-//   }, []);
+  } )
+  .catch( (error) => {
+    console.log(error )
+
+  } )
+} , [])
 
   return (
     <div className="container mx-auto mt-10">

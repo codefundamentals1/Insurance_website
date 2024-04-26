@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+
 
 const IncidentPage = () => {
   
@@ -31,17 +33,23 @@ const IncidentPage = () => {
     }
   ];
 
-  const [incidents, setIncidents] = useState(tempData);
-  // const [loading, setLoading] = useState(true);
-  //set it true when data come from abckend
-  const [loading, setLoading] = useState(false);
-//   useEffect(() => {
-//     // Simulated API call
-//     setTimeout(() => {
-//       setIncidents(tempData);
-//       setLoading(false);
-//     }, 1000);
-//   }, []);
+  const [incidents, setIncidents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+
+  useEffect( ()=> {
+    axios.get('http://localhost:3000/userlayout/IP')
+    .then((response) => {
+      setIncidents(response.data)
+      setLoading(false)
+
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , [])
+
 
   return (
     <div className="container mx-auto mt-10 w-screen h-screen">

@@ -19,7 +19,7 @@ const ProductPage1 = () => {
     }
   ];
   const [products, setProducts] = useState(tempData);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
 
 //   useEffect(() => {

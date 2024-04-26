@@ -1,4 +1,5 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
+import axios from 'axios';
 
 const QuotePage = () => {
 
@@ -41,24 +42,22 @@ const QuotePage = () => {
           
     ]
   // State to store quote data
-  const [quotes, setQuotes] = useState(tempdata);
+  const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-//   useEffect(() => {
-//     // Fetch quote data from the backend API
-//     const fetchQuotes = async () => {
-//       try {
-//         const response = await fetch('your-backend-api-url');
-//         const data = await response.json();
-//         setQuotes(data);
-//         setLoading(false);
-//       } catch (error) {
-//         console.error('Error fetching quote data:', error);
-//       }
-//     };
 
-//     fetchQuotes();
-//   }, []);
+  useEffect( ()=> {
+    axios.get('http://localhost:3000/userlayout/quote_read')
+    .then((response) => {
+      setQuotes(response.data)
+      setLoading(false)
+
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , [])
 
   return (
     <div className="container mx-auto mt-10">

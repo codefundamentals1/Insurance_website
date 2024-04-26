@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const NOKPage = () => {
  
@@ -28,17 +29,21 @@ const NOKPage = () => {
     }
   ];
 
-  const [noks, setNOKs] = useState(tempData);
+  const [noks, setNOKs] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  useEffect( ()=> {
+    axios.get('http://localhost:3000/userlayout/nok')
+    .then((response) => {
+      setNOKs(response.data)
+      setLoading(false)
 
+    } )
+    .catch( (error) => {
+      console.log(error )
 
-//   useEffect(() => {
-//     // Simulated API call
-//     setTimeout(() => {
-//       setNOKs(tempData);
-//       setLoading(false);
-//     }, 1000);
-//   }, []);
+    } )
+  } , [])
 
   return (
     <div className="container mx-auto mt-10">

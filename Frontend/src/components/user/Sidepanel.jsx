@@ -19,11 +19,11 @@ function Sidepanel() {
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+          <Offcanvas.Title>Customer</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         
-          <ul className="px-4">
+          <ul className="px-4" onClick={handleClose}>
             <Link to ='/userlayout/Customerform'>
             <li className="py-1">
               <a href="#" className="text-gray-800 hover:text-blue-500">Customer</a>

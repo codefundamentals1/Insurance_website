@@ -27,20 +27,22 @@ export default function ApllicationRead() {
         }
       ]
       
-    const [applications, setApplications] = useState(tempapp);
+    const [applications, setApplications] = useState([]);
 
-    // useEffect(() => {
-    //     // Fetch data from the backend API
-    //     axios.get('/api/applications')
-    //         .then(response => {
-    //             // Set the fetched data to the state
-    //             setApplications(response.data);
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching applications:', error);
-    //         });
-    // }, []); // Empty dependency array ensures the effect runs only once on component mount
-
+    useEffect( ()=> {
+        axios.get('http://localhost:3000/userlayout/application')
+        .then((response) => {
+            setApplications(response.data)
+          setLoading(false)
+    
+        } )
+        .catch( (error) => {
+          console.log(error )
+    
+        } )
+      } , [])
+    
+    
     if (!Array.isArray(applications)) {
         return <div>Loading...</div>; // Or handle the loading state however you prefer
     }

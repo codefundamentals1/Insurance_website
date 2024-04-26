@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const VehicleServicePage = () => {
  
@@ -27,15 +28,22 @@ const VehicleServicePage = () => {
     }
   ];
 
-  const [services, setServices] = useState(tempData);
+  const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
-//   useEffect(() => {
-//     // Simulated API call
-//     setTimeout(() => {
-//       setServices(tempData);
-//       setLoading(false);
-//     }, 1000);
-//   }, []);
+
+  useEffect( ()=> {
+    axios.get('http://localhost:3000/userlayout/vehicleservicepage')
+    .then((response) => {
+      setServices(response.data)
+      setLoading(false)
+
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , [])
+
 
   return (
     <div className="container mx-auto mt-10">
@@ -59,7 +67,7 @@ const VehicleServicePage = () => {
           <tbody>
             {services.map(service => (
               <tr key={service.vehicle_service_id}>
-                <td className="py-2 px-4 border border-gray-300">{service.vehicle_service_id}</td>
+                <td className="py-2 px-4 border border-gray-300">{service.vehicle_service}</td>
                 <td className="py-2 px-4 border border-gray-300">{service.vehicle_id}</td>
                 <td className="py-2 px-4 border border-gray-300">{service.cust_id}</td>
                 <td className="py-2 px-4 border border-gray-300">{service.department_name}</td>

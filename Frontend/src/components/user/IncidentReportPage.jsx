@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 const IncidentReportPage = () => {
@@ -24,17 +25,23 @@ const IncidentReportPage = () => {
     }
   ];
 
-  const [incidentReports, setIncidentReports] = useState(tempData);
-  const [loading, setLoading] = useState(false);
+  const [incidentReports, setIncidentReports] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  
 
-//   useEffect(() => {
-//     // Simulated API call
-//     setTimeout(() => {
-//       setIncidentReports(tempData);
-//       setLoading(false);
-//     }, 1000);
-//   }, []);
+  useEffect( ()=> {
+    axios.get('http://localhost:3000/userlayout/IRP')
+    .then((response) => {
+      setIncidentReports(response.data)
+      setLoading(false)
+
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , [])
 
   return (
     <div className="container mx-auto mt-10">

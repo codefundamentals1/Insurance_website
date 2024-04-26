@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link } from 'react-router-dom';
 import Home from '../Home';
+
 
 function Sidepanel_in() {
   const [show, setShow] = useState(false);
@@ -12,17 +13,18 @@ function Sidepanel_in() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      {/* <Button className='m-4' variant="" onClick={handleShow}>
        Drawer
-      </Button>
+      </Button> */}
+      <button className="btn lg:btn-lg" onClick={handleShow}>open drawer</button>
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+          <Offcanvas.Title>Insurance </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         
-          <ul className="px-4">
+          <ul className="px-4" onClick={handleClose}>
            
             <Link to = "/inspectorlayout/insuracepolicypage1">
             <li className="py-1">
@@ -30,10 +32,7 @@ function Sidepanel_in() {
             </li>
             </Link>
 
-            
-
-            
-
+  
             <Link to='/inspectorlayout/incident1'>
             <li className="py-1">
               <a href="#" className="text-gray-800 hover:text-blue-500">Incident</a>

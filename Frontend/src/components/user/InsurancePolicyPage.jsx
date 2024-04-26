@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
   
 const InsurancePolicyPage = () => {
 
@@ -39,22 +40,18 @@ const InsurancePolicyPage = () => {
   const [policies, setPolicies] = useState(tempdata);
   const [loading, setLoading] = useState(true);
 
-//   useEffect(() => {
-//     // Fetch insurance policies data from the backend API
-//     const fetchPolicies = async () => {
-//       try {
-//         // Replace 'your-backend-api-url' with your actual backend API URL
-//         const response = await fetch('your-backend-api-url');
-//         const data = await response.json();
-//         setPolicies(data);
-//         setLoading(false);
-//       } catch (error) {
-//         console.error('Error fetching insurance policies data:', error);
-//       }
-//     };
+  useEffect( ()=> {
+    axios.get('http://localhost:3000/userlayout/insurance_read')
+    .then((response) => {
+      setPolicies(response.data)
+      setLoading(false)
 
-//     fetchPolicies();
-//   }, []);
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , [])
 
   return (
     <div className="container mx-auto mt-10">

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 const InsuranceCompaniesPage = () => {
@@ -29,20 +30,23 @@ const InsuranceCompaniesPage = () => {
     },
     
   ];
-
+  
   const [insuranceCompanies, setInsuranceCompanies] = useState(tempData);
-  // const [loading, setLoading] = useState(true);
-  //set it true when data come from abckend
-  const [loading, setLoading] = useState(false);
+  
+  const [loading, setLoading] = useState(true);
 
+  useEffect( ()=> {
+    axios.get('http://localhost:3000/userlayout/ICP')
+    .then((response) => {
+      setInsuranceCompanies(response.data)
+      setLoading(false)
 
-//   useEffect(() => {
-//     // Simulated API call
-//     setTimeout(() => {
-//       setInsuranceCompanies(tempData);
-//       setLoading(false);
-//     }, 1000);
-//   }, []);
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , [])
 
   return (
     <div className="container mx-auto mt-10">
