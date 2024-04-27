@@ -12,7 +12,6 @@ const UserLayout = () => {
 
     <div className='w-screen min-h-screen'>
     <Sidepanel></Sidepanel>
-    
     <Outlet></Outlet>
     </div>
     

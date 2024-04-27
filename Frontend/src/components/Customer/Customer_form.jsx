@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Customer_form = () => {
   const [formData, setFormData] = useState({
@@ -41,20 +42,24 @@ const Customer_form = () => {
     });
   };
 
+ 
+
+
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">Add New Customer</h1>
 
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
         <div className="grid grid-cols-1 gap-4">
-          <input
+          {/* <input
             type="text"
             name="cust_id"
             value={formData.cust_id}
             onChange={handleChange}
             placeholder="Customer ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
-          />
+          /> */}
           <input
             type="text"
             name="cust_fname"

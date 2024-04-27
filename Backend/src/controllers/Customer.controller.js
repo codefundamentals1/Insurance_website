@@ -1,11 +1,18 @@
 const mysql = require("mysql2");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { promisify } = require("util");
+let express = require('express'); 
+let cookieParser = require('cookie-parser'); 
+//setup express app 
+let app = express() 
+  
+app.use(cookieParser()); 
 
 const db = require('../db/config')
 
     exports.login  = async(req, res) => {
+      
+            
         const { username, password } = req.body;
         if (!username || !password) {
             return res.status(400).json({ message: 'Please provide both username and password' });
@@ -17,9 +24,8 @@ const db = require('../db/config')
             if (err) {
                 return res.status(500).json({ message: 'Internal server error' });
             }
-            if (result.length > 0) {
-                // User au   localSthenticated
-                res.status(200).json({ message: 'Login successful' });
+            if (result.length > 0) { 
+               return res.status(200).json({ username: req.body.username });
             } else {
                 // Authentication failed
                 res.status(401).json({ message: 'Invalid credentials' });

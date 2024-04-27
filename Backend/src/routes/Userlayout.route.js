@@ -4,7 +4,7 @@ const user = require("../controllers/Userlayout.controller.js");
 const router = express.Router();
 
 // router.post('/register', inspectController.register)
-
+router.get('',user.customer_read );
 router.get('/customer_read',user.customer_read );
 router.get('/quote_read',user.quote_read );
 router.get('/application',user.application );

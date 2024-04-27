@@ -27,22 +27,20 @@ const DamageInspectorLoginPage = () => {
     })
 
   
-    result = await result.json()
-    localStorage.setItem("user" , JSON.stringify(result))
-    console.warn(result)
+    if (result.ok) {
+      const data = await result.json();
+      localStorage.setItem('user', JSON.stringify(data))  ;
+     
+      navigate(`/inspectorlayout`);
+    }
+    
+    else {
       setUsername('')
-    setPassword('')
-    let userItem = localStorage.getItem('user');
-    if(userItem) {
-      let userJson = JSON.parse(userItem);
-      if(userJson.message === 'inspector Login successful'){ navigate("/inspectorlayout")}
-      else{
-        alert("invalid details ")}
-        
-      
-      
-    } 
+      setPassword('')
+      alert("invalid details ")
+    }
   };
+
 
   return (
     <div className="container mx-auto mt-8 min-h-screen justify-items-center" >

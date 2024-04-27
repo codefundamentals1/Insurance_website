@@ -9,7 +9,8 @@ const cookieParser = require("cookie-parser");
 // const con = require('./db/config')
 
 const app = express();
-app.use(cors())
+app.use(cors({credentials: true, origin: true, exposedHeaders: ["set-cookie"]}))
+app.set('trust proxy', 1)
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }))

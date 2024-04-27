@@ -19,7 +19,9 @@ const db = require('../db/config')
             }
             if (result.length > 0) {
                 // User authenticated
-                res.status(200).json({ message: 'inspector Login successful' });
+                return res.status(200).json({ username: req.body.username });
+
+                // res.status(200).json({ message: 'inspector Login successful' });
             } else {
                 // Authentication failed
                 res.status(401).json({ message: 'Invalid credentials' });

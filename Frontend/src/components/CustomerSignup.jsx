@@ -28,17 +28,19 @@ const CustomerSignup = () => {
     })
 
   
-    result = await result.json()
-    localStorage.setItem("user" , JSON.stringify(result))
-    console.warn(result)
+      
+    
+    if (result.ok) {
+      // const data = await result.json();
+      // localStorage.setItem('user', JSON.stringify(data))  ;
+     
+      navigate(`/customer/login`);
+    }
+    else {
       setUsername('')
     setPassword('')
-    
-    let userItem = localStorage.getItem('user');
-    if(userItem) {
-      let userJson = JSON.parse(userItem);
-      if(userJson.message === 'signedup') navigate("/userlayout")
-    } 
+      alert("invalid details ")
+    }
     
   };
 
