@@ -31,7 +31,7 @@ const IncidentReportPage = () => {
   
 
   useEffect( ()=> {
-    axios.get('http://localhost:3000/userlayout/IRP')
+    axios.get('/api/userlayout/IRP')
     .then((response) => {
       setIncidentReports(response.data)
       setLoading(false)

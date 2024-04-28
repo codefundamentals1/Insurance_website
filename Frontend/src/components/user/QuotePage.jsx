@@ -47,7 +47,7 @@ const QuotePage = () => {
 
 
   useEffect( ()=> {
-    axios.get('http://localhost:3000/userlayout/quote_read')
+    axios.get('/api/userlayout/quote_read')
     .then((response) => {
       setQuotes(response.data)
       setLoading(false)

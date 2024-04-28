@@ -1,7 +1,7 @@
 const mysql = require("mysql2");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-let express = require('express'); 
+let express = require('express');
 let cookieParser = require('cookie-parser'); 
 //setup express app 
 let app = express() 
@@ -11,7 +11,8 @@ app.use(cookieParser());
 const db = require('../db/config')
 
     exports.login  = async(req, res) => {
-      
+    //   console.log('New request:', req.url);
+    //   console.log('Existing cookie:', req.cookies.userId)
             
         const { username, password } = req.body;
         if (!username || !password) {
@@ -25,7 +26,12 @@ const db = require('../db/config')
                 return res.status(500).json({ message: 'Internal server error' });
             }
             if (result.length > 0) { 
-               return res.status(200).json({ username: req.body.username });
+               const custid = 'select id from customer where username = ? '
+               db.query(custid , [username] , (err,result)=>{
+                console.log('result:', result);
+                res.cookie('userId', result[0].id);
+                return res.status(200).json({ id: result[0].id });
+               })
             } else {
                 // Authentication failed
                 res.status(401).json({ message: 'Invalid credentials' });

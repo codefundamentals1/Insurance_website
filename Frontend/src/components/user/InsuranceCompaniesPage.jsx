@@ -36,7 +36,7 @@ const InsuranceCompaniesPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect( ()=> {
-    axios.get('http://localhost:3000/userlayout/ICP')
+    axios.get('/api/userlayout/ICP')
     .then((response) => {
       setInsuranceCompanies(response.data)
       setLoading(false)

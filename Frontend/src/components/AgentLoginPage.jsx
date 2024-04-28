@@ -19,7 +19,7 @@ const AgentLoginPage = () => {
     e.preventDefault();
     console.log('Logging in with:', { username, password });
     console.warn(username, password);
-    let result=  await fetch('http://localhost:3000/agent/login',{
+    let result=  await fetch('/api/agent/login',{
       method: 'post',
       body: JSON.stringify({ username,  password}),
       headers:{
@@ -28,22 +28,35 @@ const AgentLoginPage = () => {
     })
 
   
-    result = await result.json()
-    localStorage.setItem("user" , JSON.stringify(result))
-    console.warn(result)
-      setUsername('')
-    setPassword('')
-    let userItem = localStorage.getItem('user');
-    if(userItem) {
-      let userJson = JSON.parse(userItem);
-      if(userJson.message === 'agent Login successful') navigate("/agentlayout")
-      else{
-        alert("invalid details ")}
+  //   result = await result.json()
+  //   localStorage.setItem("user" , JSON.stringify(result))
+  //   console.warn(result)
+  //     setUsername('')
+  //   setPassword('')
+  //   let userItem = localStorage.getItem('user');
+  //   if(userItem) {
+  //     let userJson = JSON.parse(userItem);
+  //     if(userJson.message === 'agent Login successful') navigate("/agentlayout")
+  //     else{
+  //       alert("invalid details ")}
         
       
-    } 
-  };
-
+  //   } 
+  // };
+  if (result.ok) {
+    const data = await result.json();
+    localStorage.setItem('user', JSON.stringify(data))  ;
+   
+    navigate(`/agentlayout`);
+  }
+  
+  else {
+    setUsername('')
+    setPassword('')
+    alert("invalid details ")
+  }
+}
+  
   
   return (
     <div className="container mx-auto mt-8 min-h-screen justify-items-center" >

@@ -21,7 +21,7 @@ const CustomerLoginPage = () => {
     e.preventDefault();
     console.log('Logging in with:', { username, password });
     console.warn(username, password);
-    const result = await fetch('http://localhost:3000/customer/login', {
+    const result = await fetch('/api/customer/login', {
       method: 'post',
       body: JSON.stringify({ username, password }),
       headers: {

@@ -39,7 +39,7 @@ const ClaimSettlementPage = () => {
   
 
 useEffect( ()=> {
-  axios.get('http://localhost:3000/userlayout/claimsettlement')
+  axios.get('/api/userlayout/claimsettlement')
   .then((response) => {
     setClaimSettlements(response.data)
     setLoading(false)

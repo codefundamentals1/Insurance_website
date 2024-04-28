@@ -18,7 +18,7 @@ const AgentSignup = () => {
     e.preventDefault();
     console.log('registering in with:', { username, password });
     console.warn(username, password);
-    let result=  await fetch('http://localhost:3000/agent/register',{
+    let result=  await fetch('/api/agent/register',{
       method: 'post',
       body: JSON.stringify({ username,  password}),
       headers:{
@@ -27,16 +27,28 @@ const AgentSignup = () => {
     })
 
   
-    result = await result.json()
-    localStorage.setItem("user" , JSON.stringify(result))
-    console.warn(result)
+    // result = await result.json()
+    // localStorage.setItem("user" , JSON.stringify(result))
+    // console.warn(result)
+    //   setUsername('')
+    // setPassword('')
+    // let userItem = localStorage.getItem('user');
+    // if(userItem) {
+    //   let userJson = JSON.parse(userItem);
+    //   if(userJson.message === 'agent signed up successfully') navigate("/agentlayout")
+    // } 
+    
+    if (result.ok) {
+      // const data = await result.json();
+      // localStorage.setItem('user', JSON.stringify(data))  ;
+     
+      navigate(`/agent/login`);
+    }
+    else {
       setUsername('')
     setPassword('')
-    let userItem = localStorage.getItem('user');
-    if(userItem) {
-      let userJson = JSON.parse(userItem);
-      if(userJson.message === 'agent signed up successfully') navigate("/agentlayout")
-    } 
+      alert("invalid details ")
+    }
     
   };
 

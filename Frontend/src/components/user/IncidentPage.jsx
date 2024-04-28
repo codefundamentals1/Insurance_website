@@ -38,7 +38,7 @@ const IncidentPage = () => {
 
 
   useEffect( ()=> {
-    axios.get('http://localhost:3000/userlayout/IP')
+    axios.get('/api/userlayout/IP')
     .then((response) => {
       setIncidents(response.data)
       setLoading(false)

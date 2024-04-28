@@ -1,7 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+const useritem = localStorage.getItem('user');
+{console.log(useritem);
+}
 export default function ApllicationRead() {
     const tempapp = [
         {
@@ -30,10 +32,10 @@ export default function ApllicationRead() {
     const [applications, setApplications] = useState([]);
 
     useEffect( ()=> {
-        axios.get('http://localhost:3000/userlayout/application')
+        axios.get('/api/userlayout/application')
         .then((response) => {
             setApplications(response.data)
-          setLoading(false)
+          
     
         } )
         .catch( (error) => {

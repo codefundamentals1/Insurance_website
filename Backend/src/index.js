@@ -25,13 +25,16 @@ app.get('/' , (req, res)=>{
 
 
 
-app.use('/customer', require('./routes/Customer.route'));
-app.use('/agent', require('./routes/Agent.route'));
-app.use('/inspector', require('./routes/Inspector.route'));
+app.use('/api/customer', require('./routes/Customer.route'));
+app.use('/api/agent', require('./routes/Agent.route'));
+app.use('/api/inspector', require('./routes/Inspector.route'));
 ///////////////////////////
 
 
-app.use('/userlayout', require('./routes/Userlayout.route'));
+app.use('/api/userlayout', require('./routes/Userlayout.route'));
+app.use('/api/inspectorlayout', require('./routes/Inspectorlayout.route'));
+
+app.use('/api/agentlayout', require('./routes/Agentlayout.route'))
 
 
 const port = process.env.PORT ;

@@ -15,6 +15,7 @@ import Contact from "./components/Contact.jsx";
 // import User from './components/user/User.jsx'
 
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import Form from "./components/Formpage.jsx";
 import Policies from "./components/Policies.jsx";
 import Home_form from "./components/Home_form.jsx";
@@ -60,6 +61,51 @@ import CustomerSignup from "./components/CustomerSignup.jsx";
 import DamageInspectorSignup from "./components/DamageInspectorSignup.jsx";
 import AgentSignup from "./components/AgentSignup.jsx";
 
+// insurance agent ///////////////////////////////////////
+
+import Agent_layout from "./components/Insuarnce_agent/Agent_layout.jsx";
+import Application from "./components/Insuarnce_agent/Application/Application.jsx";
+import Customer_agent from "./components/Insuarnce_agent/Customer/Customer_agent.jsx";
+import Quote_agent from "./components/Insuarnce_agent/Quote/Quote_agent.jsx";
+import Insuarnce_policy_agent from "./components/Insuarnce_agent/Insurance policy/Insuarnce_policy_agent.jsx";
+import Claim_settlement_agent from "./components/Insuarnce_agent/Claim settlement/Claim_settlement_agent.jsx";
+import Office_agent from "./components/Insuarnce_agent/Office/Office_agent.jsx";
+import Membership_agent from "./components/Insuarnce_agent/Membership_agent/Membership_agent.jsx";
+import Vehicle_service from "./components/Insuarnce_agent/Vehicle service/Vehicle_service.jsx";
+import Nok from "./components/Insuarnce_agent/NOK/Nok.jsx";
+import Insuarnce_company_agent from "./components/Insuarnce_agent/Insurance company/Insurance_company_agent.jsx";
+import Incident_agent from "./components/Insuarnce_agent/Incident/Incident_agent.jsx";
+import Policy_renewable_agent from "./components/Insuarnce_agent/Policy_renewable/Policy_renewable_agent.jsx";
+import Incident_report from "./components/Insuarnce_agent/Incident_report/Incident_report.jsx";
+import Coverage from "./components/Insuarnce_agent/Coverage/Coverage.jsx";
+import Product from "./components/Insuarnce_agent/Product/Product.jsx";
+import Receipt from "./components/Insuarnce_agent/Reciept/Receipt.jsx";
+import ClaimAgent from "./components/Insuarnce_agent/Claim/ClaimAgent.jsx";
+import Premium_payment from "./components/Insuarnce_agent/Premium_payment/Premium_payment.jsx";
+import Vehicle from "./components/Insuarnce_agent/Vehicle_agent/Vehicle.jsx";
+import Department from "./components/Insuarnce_agent/Department/Department.jsx";
+import Staff from "./components/Insuarnce_agent/Staff/Staff.jsx";
+import Customer_agent_form from "./components/Insuarnce_agent/Customer/Customer_agent_form.jsx";
+import Application_form from "./components/Insuarnce_agent/Application/Application_form.jsx";
+import Policy_quote_form from "./components/Insuarnce_agent/Quote/Policy_quote_form.jsx";
+import Insurance_policy_form from "./components/Insuarnce_agent/Insurance policy/Insurance_policy_form.jsx";
+import Membership_formAgent from "./components/Insuarnce_agent/Membership_agent/Membership_formAgent.jsx";
+import Vehicle_service_form from "./components/Insuarnce_agent/Vehicle service/Vehicle_service_form.jsx";
+import Nok_form from "./components/Insuarnce_agent/NOK/Nok_form.jsx";
+import Policy_renewable_form from "./components/Insuarnce_agent/Policy_renewable/Policy_renewable_form.jsx";
+import Incident_report_form from "./components/Insuarnce_agent/Incident_report/Incident_report_form.jsx";
+import Coverage_form from "./components/Insuarnce_agent/Coverage/Coverage_form.jsx";
+import Product_form from "./components/Insuarnce_agent/Product/Product_form.jsx";
+import Receipt_form from "./components/Insuarnce_agent/Reciept/Reciept_form.jsx";
+import Claim_form from "./components/Insuarnce_agent/Claim/Claim_form.jsx";
+import Department_form from "./components/Insuarnce_agent/Department/Department_form.jsx";
+import Staff_form from "./components/Insuarnce_agent/Staff/Staff_form.jsx";
+import Payment_form from "./components/Insuarnce_agent/Premium_payment/Payment_form.jsx";
+import Vehicle_form from "./components/Insuarnce_agent/Vehicle_agent/Vehicle_form.jsx";
+import Claim_settlement_form from "./components/Insuarnce_agent/Claim settlement/Claim_settlement_form.jsx";
+
+/// creating routers.///////////////////////////////////////////////////
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
@@ -68,7 +114,7 @@ const router = createBrowserRouter(
       <Route path="contact" element={<Contact />} />
 
       {/* <Route path="form" element={<Form />} /> */}
-      
+
       <Route path="policies" element={<Policies />} />
       {/* <Route path="home_form" element={<Home_form />} /> */}
       {/* <Route path="vehicleform" element={<VehicleForm />} /> */}
@@ -87,7 +133,8 @@ const router = createBrowserRouter(
 
       {/* <Route path="claim" element={<Claim />} /> */}
 
-      {/* user route  customer route*/}
+      {/*//////////////////   user route  customer route   ////////////////////*/}
+
       <Route path="userlayout" element={<UserLayout />}>
         <Route path="" element={<Customer_form />} />
         <Route path="Customerform" element={<Customer_form />} />
@@ -112,19 +159,64 @@ const router = createBrowserRouter(
         <Route path="RP" element={<ReceiptPage />} />
       </Route>
 
-      {/* Damage inspector path */}
+      {/* ///////////////////////////////////  agents    ////////////////////////////////////// */}
 
-      <Route path="inspectorlayout" element={<DamageInspectorLayout />}>
-      <Route path="" element={<InsurancePolicyPage1 />}/>
-        <Route path="insuracepolicypage1" element={<InsurancePolicyPage1 />}/>
-        <Route path="incident1" element={<IncidentPage1 />}/>
-        <Route path="productpage1" element={<ProductPage1 />}/>
-        <Route path="adminpanel" element={<AdminPanel />}/>
-        <Route path="incidentreportpage" element={<IncidentReportPage1/>}/>
-        <Route path="incidentform1" element={<Incident_form1/>}/>
+      <Route path="agentlayout" element={<Agent_layout />}>
+      <Route path="" element={<Customer_agent />} />
+        <Route path="quote_read" element={<QuotePage />} />
+        <Route path="application" element={<Application />} />
+        <Route path="customer" element={<Customer_agent />} />
+        <Route path="quote" element={<Quote_agent />} />
+        <Route path="insurancepolicy" element={<Insuarnce_policy_agent />} />
+        <Route path="claimsettle" element={<Claim_settlement_agent />} />
+        <Route path="office" element={<Office_agent />} />
+        <Route path="membership" element={<Membership_agent />} />
+        <Route path="vehicleservice" element={<Vehicle_service />} />
+        <Route path="nok" element={<Nok />} />
+        <Route path="insurancecompany" element={<Insuarnce_company_agent />} />
+        <Route path="policyrenewable" element={<Policy_renewable_agent />} />
+        <Route path="incident" element={<Incident_agent />} />
+        <Route path="incidentreport" element={<Incident_report />} />
+        <Route path="coverage" element={<Coverage />} />
+        <Route path="product" element={<Product />} />
+        <Route path="receipt" element={<Receipt />} />
+        <Route path="claimagent" element={<ClaimAgent />} />
+        <Route path="payment" element={<Premium_payment />} />
+        <Route path="vehicle" element={<Vehicle />} />
+        <Route path="staff" element={<Staff />} />
+        <Route path="department" element={<Department />} />
+        <Route path="customerform" element={<Customer_agent_form />} />
+        <Route path="applicationform" element={<Application_form />} />
+        <Route path="quoteform" element={<Policy_quote_form />} />
+        <Route path="policyform" element={<Insurance_policy_form />} />
+        <Route path="memberformagent" element={<Membership_formAgent />} />
+        <Route path="vsform" element={<Vehicle_service_form />} />
+        <Route path="nokform" element={<Nok_form />} />
+        <Route path="prform" element={<Policy_renewable_form />} />
+        <Route path="irform" element={<Incident_report_form />} />
+        <Route path="iform" element={<Incident_form />} />
+        <Route path="coform" element={<Coverage_form />} />
+        <Route path="pform" element={<Product_form />} />
+        <Route path="rform" element={<Receipt_form />} />
+        <Route path="clform" element={<Claim_form />} />
+        <Route path="dform" element={<Department_form />} />
+        <Route path="sform" element={<Staff_form />} />
+        <Route path="paymentform" element={<Payment_form />} />
+        <Route path="vform" element={<Vehicle_form />} />
+        <Route path="csform" element={<Claim_settlement_form />} />
       </Route>
 
+      {/* ///////////////////////////  Damage inspector path  ////////////////////////////// */}
 
+      <Route path="inspectorlayout" element={<DamageInspectorLayout />}>
+        <Route path="" element={<InsurancePolicyPage1 />} />
+        <Route path="insuracepolicypage1" element={<InsurancePolicyPage1 />} />
+        <Route path="incident1" element={<IncidentPage1 />} />
+        <Route path="productpage1" element={<ProductPage1 />} />
+        <Route path="adminpanel" element={<AdminPanel />} />
+        <Route path="incidentreportpage" element={<IncidentReportPage1 />} />
+        <Route path="incidentform1" element={<Incident_form1 />} />
+      </Route>
     </Route>
   )
 );

@@ -34,7 +34,7 @@ const IncidentPage1 = () => {
   const [incidents, setIncidents] = useState(tempData);
   // const [loading, setLoading] = useState(true);
   //set it true when data come from abckend
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 //   useEffect(() => {
 //     // Simulated API call
 //     setTimeout(() => {

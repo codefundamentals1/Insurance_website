@@ -19,7 +19,7 @@ const CustomerSignup = () => {
     e.preventDefault();
     console.log('registering in with:', { username, password });
     console.warn(username, password);
-    let result=  await fetch('http://localhost:3000/customer/register',{
+    let result=  await fetch('/api/customer/register',{
       method: 'post',
       body: JSON.stringify({ username,  password}),
       headers:{

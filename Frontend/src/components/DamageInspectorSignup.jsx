@@ -18,7 +18,7 @@ const DamageInspectorSignup = () => {
     e.preventDefault();
     console.log('registering in with:', { username, password });
     console.warn(username, password);
-    let result=  await fetch('http://localhost:3000/inspector/register',{
+    let result=  await fetch('/api/inspector/register',{
       method: 'post',
       body: JSON.stringify({ username,  password}),
       headers:{

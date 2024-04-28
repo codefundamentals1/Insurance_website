@@ -32,7 +32,7 @@ const VehicleServicePage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect( ()=> {
-    axios.get('http://localhost:3000/userlayout/vehicleservicepage')
+    axios.get('/api/userlayout/vehicleservicepage')
     .then((response) => {
       setServices(response.data)
       setLoading(false)

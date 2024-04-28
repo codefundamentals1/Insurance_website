@@ -32,7 +32,7 @@ const CustomerPage = () => {
   const [customers, setCustomers] = useState(tempdata);
   const [loading, setLoading] = useState(true);
   useEffect( ()=> {
-    axios.get('http://localhost:3000/userlayout/customer_read')
+    axios.get('/api/userlayout/customer_read')
     .then((response) => {
       setCustomers(response.data)
       setLoading(false)

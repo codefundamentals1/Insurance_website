@@ -17,9 +17,13 @@ const db = require('../db/config')
             if (err) {
                 return res.status(500).json({ message: 'Internal server error' });
             }
-            if (result.length > 0) {
-                // User authenticated
-                res.status(200).json({ message: 'agent Login successful' });
+            if (result.length > 0) { 
+                const agentid = 'select id from agent where username = ? '
+                db.query(agentid , [username] , (err,result)=>{
+                 console.log('result:', result);
+                 res.cookie('userId', result[0].id);
+                 return res.status(200).json({ id: result[0].id });
+                })
             } else {
                 // Authentication failed
                 res.status(401).json({ message: 'Invalid credentials' });

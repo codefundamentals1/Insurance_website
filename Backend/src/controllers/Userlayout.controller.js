@@ -1,10 +1,13 @@
 const mydata = require('../db/configmain')
+
 //////////////////////////////////////////
 exports.customer_read =async(req,res)=>{
 
-  mydata.query("select * from customer where cust_id =	'CUST004'",(error, result, field)=>{
+console.log('Existing  cookie in controller:', req.cookies.userId)
+const sql = 'select * from customer where cust_id =	? '
+  mydata.query(sql , ['cust004'],(error, result, field)=>{
       if(error) throw error;
-      console.log(result)
+      // console.log(result)
       res.send(result);
     })
 };
@@ -24,7 +27,7 @@ exports.application =async(req,res)=>{
 exports.quote_read =async(req,res)=>{
   mydata.query("select * from quote where  quote_id =101  or cust_id = 'CUST004' ",(error, result, field)=>{
       if(error) throw error;
-      console.log(result)
+      // console.log(result)
       res.send(result);
     })
 }

@@ -19,9 +19,12 @@ const db = require('../db/config')
             }
             if (result.length > 0) {
                 // User authenticated
-                return res.status(200).json({ username: req.body.username });
-
-                // res.status(200).json({ message: 'inspector Login successful' });
+                const insid = 'select id from inspector where username = ? '
+                db.query(insid , [username] , (err,result)=>{
+                 console.log('result:', result);
+                 res.cookie('userId', result[0].id);
+                 return res.status(200).json({ id: result[0].id });
+                })
             } else {
                 // Authentication failed
                 res.status(401).json({ message: 'Invalid credentials' });

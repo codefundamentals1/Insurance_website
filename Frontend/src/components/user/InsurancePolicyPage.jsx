@@ -41,7 +41,7 @@ const InsurancePolicyPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect( ()=> {
-    axios.get('http://localhost:3000/userlayout/insurance_read')
+    axios.get('/api/userlayout/insurance_read')
     .then((response) => {
       setPolicies(response.data)
       setLoading(false)

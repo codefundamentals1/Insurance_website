@@ -33,7 +33,7 @@ export default function OfficePage() {
 
 
   useEffect( ()=> {
-    axios.get('http://localhost:3000/userlayout/officepage')
+    axios.get('/api/userlayout/officepage')
     .then((response) => {
       setOffices(response.data)
       setLoading(false)

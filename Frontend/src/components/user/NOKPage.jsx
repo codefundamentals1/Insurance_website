@@ -33,7 +33,7 @@ const NOKPage = () => {
   const [loading, setLoading] = useState(true);
   
   useEffect( ()=> {
-    axios.get('http://localhost:3000/userlayout/nok')
+    axios.get('/api/userlayout/nok')
     .then((response) => {
       setNOKs(response.data)
       setLoading(false)

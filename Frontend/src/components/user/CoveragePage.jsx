@@ -31,7 +31,7 @@ const CoveragePage = () => {
   const [loading, setLoading] = useState(true);
   
   useEffect( ()=> {
-    axios.get('http://localhost:3000/userlayout/CoverageP')
+    axios.get('/api/userlayout/CoverageP')
     .then((response) => {
       setCoverages(response.data)
       setLoading(false)
