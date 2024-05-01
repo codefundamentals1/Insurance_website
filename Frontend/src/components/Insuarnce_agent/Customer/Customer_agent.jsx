@@ -32,11 +32,12 @@ const Customer_agent = () => {
     ];
 
 
-const [customers, setCustomers] = useState([]);
-
-//data  comig from back end 
+const [customers, setCustomers] = useState([])
+// customer_read
+//data coming from back end
+// data  comig from back end 
 useEffect( ()=> {
-  axios.get('/api/agentlayout/customer')
+  axios.get('/api/agentlayout/customer_read')
   .then((response) => {
     setCustomers(response.data)
 
@@ -64,6 +65,7 @@ return (
       {customers.map(customer => (
         <div key={customer.cust_id} className="border rounded p-4">
           <p className="text-lg font-semibold">{customer.cust_fname} {customer.cust_lname}</p>
+          <p>Cust id: {customer.cust_id}</p>
           <p>Date of Birth: {customer.cust_DOB}</p>
           <p>Gender: {customer.cust_gender}</p>
           <p>Mobile Number: {customer.cust_mob_number}</p>
@@ -72,9 +74,9 @@ return (
           <p>Marital Status: {customer.cust_martial_status}</p>
           <p>PPS Number: {customer.cust_ppS_number}</p>
           <div className=''>
-             <button className="bg-green-300 hover:bg-green-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 m-2">Accept</button>
+             {/* <button className="bg-green-300 hover:bg-green-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 m-2">Accept</button> */}
             
-             <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50  m-2">Reject</button>
+             <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50  m-2">Edit</button>
              <button className="bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50  m-2">Delete</button>
           
             </div>

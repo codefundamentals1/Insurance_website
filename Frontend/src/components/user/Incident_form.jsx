@@ -25,6 +25,8 @@ const Incident_form = () => {
       INCIDENT_DATE: '',
       DESCRIPTION: ''
     });
+
+    
   };
 
   return (

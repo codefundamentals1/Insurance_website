@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+
 
 const Customer_form = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ const Customer_form = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(formData);
     setFormData({
@@ -38,12 +38,33 @@ const Customer_form = () => {
       cust_passport_number: '',
       cust_martial_status: '',
       cust_ppS_number: '',
-      address: ''
+      address: '' 
     });
+
+    try {
+      const response = await fetch('/api/userlayout/customer_create', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Optionally handle success response
+        console.log(' data submitted successfully');
+
+        let json = await response.json();
+        // iternaryData.current = json;
+        // navigate('/agentlayout/customer');
+      } else {
+        // Optionally handle error response
+        console.error('Failed to submit  data');
+      }
+    } catch (error) {
+      console.error('Error occurred while submitting trip data:', error);
+    }
   };
-
- 
-
 
 
   return (
@@ -52,14 +73,15 @@ const Customer_form = () => {
 
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
         <div className="grid grid-cols-1 gap-4">
-          {/* <input
+          <input
             type="text"
             name="cust_id"
             value={formData.cust_id}
             onChange={handleChange}
             placeholder="Customer ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
-          /> */}
+            required
+          />
           <input
             type="text"
             name="cust_fname"
@@ -67,6 +89,7 @@ const Customer_form = () => {
             onChange={handleChange}
             placeholder="First Name"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -75,6 +98,7 @@ const Customer_form = () => {
             onChange={handleChange}
             placeholder="Last Name"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="date"
@@ -83,17 +107,19 @@ const Customer_form = () => {
             onChange={handleChange}
             placeholder="Date of Birth"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <select
             name="cust_gender"
             value={formData.cust_gender}
             onChange={handleChange}
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           >
             <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+            <option value="O">O</option>
           </select>
           <input
             type="tel"
@@ -102,6 +128,7 @@ const Customer_form = () => {
             onChange={handleChange}
             placeholder="Mobile Number"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="email"
@@ -110,6 +137,7 @@ const Customer_form = () => {
             onChange={handleChange}
             placeholder="Email"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -118,12 +146,14 @@ const Customer_form = () => {
             onChange={handleChange}
             placeholder="Passport Number"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <select
             name="cust_martial_status"
             value={formData.cust_martial_status}
             onChange={handleChange}
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           >
             <option value="">Select Marital Status</option>
             <option value="single">Single</option>
@@ -138,6 +168,7 @@ const Customer_form = () => {
             onChange={handleChange}
             placeholder="PPS Number"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -146,21 +177,13 @@ const Customer_form = () => {
             onChange={handleChange}
             placeholder="Address"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
         </div>
 
         <button type="submit" className="bg-blue-500 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600 transition duration-300">
-          Read
-        </button>
-
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600 transition duration-300">
           Submit
         </button>
-
-          
-
-          
-      
       </form>
     </div>
   );

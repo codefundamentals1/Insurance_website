@@ -31,17 +31,24 @@ const IncidentPage1 = () => {
     }
   ];
 
-  const [incidents, setIncidents] = useState(tempData);
-  // const [loading, setLoading] = useState(true);
-  //set it true when data come from abckend
+  const [incidents, setIncidents] = useState([]);
   const [loading, setLoading] = useState(true);
-//   useEffect(() => {
-//     // Simulated API call
-//     setTimeout(() => {
-//       setIncidents(tempData);
-//       setLoading(false);
-//     }, 1000);
-//   }, []);
+  useEffect(() => {
+    // Fetch insurance policies data from the backend API
+    const fetchIncident = async () => {
+      try {
+        // Replace 'your-backend-api-url' with your actual backend API URL
+        const response = await fetch('/api/inspectorlayout/incident1');
+        const data = await response.json();
+        setIncidents(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching insurance policies data:', error);
+      }
+    };
+
+    fetchIncident();
+  }, []);
 
   return (
     <div className="container mx-auto mt-10 w-screen h-screen">

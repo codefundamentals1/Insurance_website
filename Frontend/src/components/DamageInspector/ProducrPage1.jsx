@@ -18,17 +18,26 @@ const ProductPage1 = () => {
       product_type: "Health Insurance"
     }
   ];
-  const [products, setProducts] = useState(tempData);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
 
-//   useEffect(() => {
-//     // Simulated API call
-//     setTimeout(() => {
-//       setProducts(tempData);
-//       setLoading(false);
-//     }, 1000);
-//   }, []);
+  useEffect(() => {
+    // Fetch insurance policies data from the backend API
+    const fetchProduct = async () => {
+      try {
+        // Replace 'your-backend-api-url' with your actual backend API URL
+        const response = await fetch('/api/inspectorlayout/productpage1');
+        const data = await response.json();
+        setProducts(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching insurance policies data:', error);
+      }
+    };
+
+    fetchProduct();
+  }, []);
 
   return (
     <div className="container mx-auto mt-10">

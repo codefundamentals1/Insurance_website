@@ -4,6 +4,7 @@ const user = require("../controllers/Userlayout.controller.js");
 const router = express.Router();
 
 router.get('',user.customer_read );
+router.post('/customer_create' , user.customer_create);
 router.get('/customer_read',user.customer_read );
 router.get('/quote_read',user.quote_read );
 router.get('/application',user.application );
@@ -18,6 +19,7 @@ router.get('/IRP',user.IRP );
 router.get('/CoverageP',user.CoverageP );
 router.get('/PP',user.PP );
 router.get('/RP',user.RP );
+
 
 
 

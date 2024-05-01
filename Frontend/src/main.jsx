@@ -103,6 +103,7 @@ import Staff_form from "./components/Insuarnce_agent/Staff/Staff_form.jsx";
 import Payment_form from "./components/Insuarnce_agent/Premium_payment/Payment_form.jsx";
 import Vehicle_form from "./components/Insuarnce_agent/Vehicle_agent/Vehicle_form.jsx";
 import Claim_settlement_form from "./components/Insuarnce_agent/Claim settlement/Claim_settlement_form.jsx";
+import Incident_formagent from "./components/Insuarnce_agent/Incident/Incident_formagent.jsx";
 
 /// creating routers.///////////////////////////////////////////////////
 
@@ -142,6 +143,7 @@ const router = createBrowserRouter(
         <Route path="application" element={<ApplicationRead />} />
         <Route path="customer_read" element={<CustomerPage />} />
         <Route path="quote_read" element={<QuotePage />} />
+        <Route path="quoteform" element={<Policy_quote_form />} />
         <Route path="insurance_read" element={<InsurancePolicyPage />} />
         <Route path="claimsettlement" element={<ClaimSettlementPage />} />
         <Route path="officepage" element={<OfficePage />} />
@@ -165,9 +167,14 @@ const router = createBrowserRouter(
       <Route path="" element={<Customer_agent />} />
         <Route path="quote_read" element={<QuotePage />} />
         <Route path="application" element={<Application />} />
+        <Route path="applicationform" element={<Application_form />} />
         <Route path="customer" element={<Customer_agent />} />
         <Route path="quote" element={<Quote_agent />} />
+        <Route path="quoteform" element={<Policy_quote_form />} />
+
+        
         <Route path="insurancepolicy" element={<Insuarnce_policy_agent />} />
+        
         <Route path="claimsettle" element={<Claim_settlement_agent />} />
         <Route path="office" element={<Office_agent />} />
         <Route path="membership" element={<Membership_agent />} />
@@ -176,32 +183,33 @@ const router = createBrowserRouter(
         <Route path="insurancecompany" element={<Insuarnce_company_agent />} />
         <Route path="policyrenewable" element={<Policy_renewable_agent />} />
         <Route path="incident" element={<Incident_agent />} />
+        <Route path="iform" element={<Incident_formagent />} />
         <Route path="incidentreport" element={<Incident_report />} />
         <Route path="coverage" element={<Coverage />} />
         <Route path="product" element={<Product />} />
         <Route path="receipt" element={<Receipt />} />
         <Route path="claimagent" element={<ClaimAgent />} />
         <Route path="payment" element={<Premium_payment />} />
+        <Route path="paymentform" element={<Payment_form />} />
         <Route path="vehicle" element={<Vehicle />} />
+        <Route path="vform" element={<Vehicle_form />} />
+
         <Route path="staff" element={<Staff />} />
         <Route path="department" element={<Department />} />
         <Route path="customerform" element={<Customer_agent_form />} />
-        <Route path="applicationform" element={<Application_form />} />
-        <Route path="quoteform" element={<Policy_quote_form />} />
         <Route path="policyform" element={<Insurance_policy_form />} />
         <Route path="memberformagent" element={<Membership_formAgent />} />
         <Route path="vsform" element={<Vehicle_service_form />} />
         <Route path="nokform" element={<Nok_form />} />
         <Route path="prform" element={<Policy_renewable_form />} />
         <Route path="irform" element={<Incident_report_form />} />
-        <Route path="iform" element={<Incident_form />} />
+       
         <Route path="coform" element={<Coverage_form />} />
         <Route path="pform" element={<Product_form />} />
         <Route path="rform" element={<Receipt_form />} />
         <Route path="clform" element={<Claim_form />} />
         <Route path="dform" element={<Department_form />} />
         <Route path="sform" element={<Staff_form />} />
-        <Route path="paymentform" element={<Payment_form />} />
         <Route path="vform" element={<Vehicle_form />} />
         <Route path="csform" element={<Claim_settlement_form />} />
       </Route>

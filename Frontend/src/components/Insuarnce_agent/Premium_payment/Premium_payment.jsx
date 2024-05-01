@@ -1,31 +1,46 @@
 import { Link } from "react-router-dom";
-
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from 'react';
 
 const Premium_payment= () => {
   const [premiumPayments, setPremiumPayments] = useState([
-    {
-      premium_payment_id: 'PREM001',
-      cust_id: 'CUST001',
-      policy_number: 'POL001',
-      premium_payment_schedule: '2024-04-30T00:00:00Z',
-      premium_payment_amount: 500
-    },
-    {
-      premium_payment_id: 'PREM002',
-      cust_id: 'CUST002',
-      policy_number: 'POL002',
-      premium_payment_schedule: '2024-04-30T00:00:00Z',
-      premium_payment_amount: 700
-    },
-    {
-      premium_payment_id: 'PREM003',
-      cust_id: 'CUST003',
-      policy_number: 'POL003',
-      premium_payment_schedule: '2024-04-30T00:00:00Z',
-      premium_payment_amount: 600
-    }
+    // {
+    //   premium_payment_id: 'PREM001',
+    //   cust_id: 'CUST001',
+    //   policy_number: 'POL001',
+    //   premium_payment_schedule: '2024-04-30T00:00:00Z',
+    //   premium_payment_amount: 500
+    // },
+    // {
+    //   premium_payment_id: 'PREM002',
+    //   cust_id: 'CUST002',
+    //   policy_number: 'POL002',
+    //   premium_payment_schedule: '2024-04-30T00:00:00Z',
+    //   premium_payment_amount: 700
+    // },
+    // {
+    //   premium_payment_id: 'PREM003',
+    //   cust_id: 'CUST003',
+    //   policy_number: 'POL003',
+    //   premium_payment_schedule: '2024-04-30T00:00:00Z',
+    //   premium_payment_amount: 600
+    // }
   ]);
+  const [loading, setLoading] = useState(true);
+  useEffect( ()=> {
+    axios.get('/api/agentlayout/ppayment_read')
+    .then((response) => {
+      setPremiumPayments(response.data)
+      setLoading(false);
+
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , []);
+
+  
 
   return (
     <div className="container mx-auto p-4">

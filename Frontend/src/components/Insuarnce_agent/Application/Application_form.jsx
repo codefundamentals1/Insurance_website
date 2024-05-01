@@ -17,7 +17,7 @@ const Application_form = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(formData);
     setFormData({
@@ -27,6 +27,33 @@ const Application_form = () => {
       application_status: 'pending',
       coverage: ''
     });
+
+    
+    try {
+      const response = await fetch('/api/agentlayout/application_create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Optionally handle success response
+        console.log(' data submitted successfully');
+
+        let json = await response.json();
+        // iternaryData.current = json;
+        // navigate('/agentlayout/customer');
+      } else {
+        // Optionally handle error response
+        console.error('Failed to submit  data');
+      }
+    } catch (error) {
+      console.error('Error occurred while submitting trip data:', error);
+    }
+
+    
   };
 
   return (
@@ -42,6 +69,7 @@ const Application_form = () => {
             onChange={handleChange}
             placeholder="Application ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -50,6 +78,7 @@ const Application_form = () => {
             onChange={handleChange}
             placeholder="Customer ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -58,12 +87,14 @@ const Application_form = () => {
             onChange={handleChange}
             placeholder="Vehicle ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <select
             name="application_status"
             value={formData.application_status}
             onChange={handleChange}
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           >
             <option value="accepted">Accepted</option>
             <option value="rejected">Rejected</option>
@@ -76,6 +107,7 @@ const Application_form = () => {
             onChange={handleChange}
             placeholder="Coverage"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
         </div>
 

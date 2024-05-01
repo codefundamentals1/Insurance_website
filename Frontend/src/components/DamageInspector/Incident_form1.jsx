@@ -18,6 +18,7 @@ const Incident_form1 = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     console.log(formData);
     setFormData({
       INCIDENT_ID: '',

@@ -1,42 +1,56 @@
 
 import { Link } from 'react-router-dom';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Insuarnce_policy_agent= () => {
   const [insurancePolicies, setInsurancePolicies] = useState([
-    {
-      "aggrement_id": "AGREEMENT001",
-      "application_id": "APP001",
-      "cust_id": "CUST001",
-      "department_name": "Claims",
-      "policy_number": "POL001",
-      "start_date": "2024-01-01T00:00:00Z",
-      "expiry_date": "2025-01-01T00:00:00Z",
-      "term_condition_description": "Standard policy terms and conditions"
-    },
-    {
-      "aggrement_id": "AGREEMENT002",
-      "application_id": "APP002",
-      "cust_id": "CUST002",
-      "department_name": "Underwriting",
-      "policy_number": "POL002",
-      "start_date": "2024-02-01T00:00:00Z",
-      "expiry_date": "2025-02-01T00:00:00Z",
-      "term_condition_description": "Premium policy terms and conditions"
-    },
-    {
-      "aggrement_id": "AGREEMENT003",
-      "application_id": "APP003",
-      "cust_id": "CUST003",
-      "department_name": "Policy Administration",
-      "policy_number": "POL003",
-      "start_date": "2024-03-01T00:00:00Z",
-      "expiry_date": "2025-03-01T00:00:00Z",
-      "term_condition_description": "Custom policy terms and conditions"
-    }
+    // {
+    //   "aggrement_id": "AGREEMENT001",
+    //   "application_id": "APP001",
+    //   "cust_id": "CUST001",
+    //   "department_name": "Claims",
+    //   "policy_number": "POL001",
+    //   "start_date": "2024-01-01T00:00:00Z",
+    //   "expiry_date": "2025-01-01T00:00:00Z",
+    //   "term_condition_description": "Standard policy terms and conditions"
+    // },
+    // {
+    //   "aggrement_id": "AGREEMENT002",
+    //   "application_id": "APP002",
+    //   "cust_id": "CUST002",
+    //   "department_name": "Underwriting",
+    //   "policy_number": "POL002",
+    //   "start_date": "2024-02-01T00:00:00Z",
+    //   "expiry_date": "2025-02-01T00:00:00Z",
+    //   "term_condition_description": "Premium policy terms and conditions"
+    // },
+    // {
+    //   "aggrement_id": "AGREEMENT003",
+    //   "application_id": "APP003",
+    //   "cust_id": "CUST003",
+    //   "department_name": "Policy Administration",
+    //   "policy_number": "POL003",
+    //   "start_date": "2024-03-01T00:00:00Z",
+    //   "expiry_date": "2025-03-01T00:00:00Z",
+    //   "term_condition_description": "Custom policy terms and conditions"
+    // }
   ]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  useEffect( ()=> {
+    axios.get('/api/agentlayout/policy_read')
+    .then((response) => {
+      setInsurancePolicies(response.data)
+      setLoading(false);
+
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , []);
+
 
   return (
     <div className="container mx-auto p-4">

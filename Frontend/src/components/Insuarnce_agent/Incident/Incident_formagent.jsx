@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Incident_form = () => {
+const Incident_formagent = () => {
   const [formData, setFormData] = useState({
     INCIDENT_ID: '',
     INCIDENT_TYPE: '',
@@ -16,7 +16,7 @@ const Incident_form = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(formData);
     setFormData({
@@ -25,6 +25,34 @@ const Incident_form = () => {
       INCIDENT_DATE: '',
       DESCRIPTION: ''
     });
+    
+    try {
+      const response = await fetch('/api/agentlayout/incident_create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Optionally handle success response
+        console.log(' data submitted successfully');
+
+        let json = await response.json();
+        // iternaryData.current = json;
+        // navigate('/agentlayout/customer');
+      } else {
+        // Optionally handle error response
+        console.error('Failed to submit  data');
+      }
+    } catch (error) {
+      console.error('Error occurred while submitting trip data:', error);
+    }
+
+      
+
+
   };
 
   return (
@@ -40,6 +68,7 @@ const Incident_form = () => {
             onChange={handleChange}
             placeholder="Incident ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -48,6 +77,7 @@ const Incident_form = () => {
             onChange={handleChange}
             placeholder="Incident Type"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="date"
@@ -56,6 +86,7 @@ const Incident_form = () => {
             onChange={handleChange}
             placeholder="Incident Date"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <textarea
             name="DESCRIPTION"
@@ -63,6 +94,7 @@ const Incident_form = () => {
             onChange={handleChange}
             placeholder="Description"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           ></textarea>
         </div>
 
@@ -74,4 +106,4 @@ const Incident_form = () => {
   );
 };
 
-export default Incident_form;
+export default Incident_formagent;

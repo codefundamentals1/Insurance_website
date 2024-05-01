@@ -1,11 +1,43 @@
 const mydata = require('../db/configmain')
 
+//////////////////////////////////////
+
+  // Create a new customer
+  exports.customer_create = async (req, res) => {
+    const {
+        cust_id,
+        cust_fname,
+        cust_lname,
+        cust_DOB,
+        cust_gender,
+        cust_mob_number,
+        cust_email,
+        cust_passport_number,
+        cust_martial_status,
+        cust_ppS_number
+    } = req.body;
+
+    const query = `INSERT INTO customer (cust_id, cust_fname, cust_lname, cust_DOB, cust_gender, cust_mob_number, cust_email, cust_passport_number, cust_martial_status, cust_ppS_number) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+    mydata.query(query, [cust_id, cust_fname, cust_lname, cust_DOB, cust_gender, cust_mob_number, cust_email, cust_passport_number, cust_martial_status, cust_ppS_number], (error, result) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("Error creating customer");
+        } else {
+            console.log("Customer created successfully");
+            res.cookie('userId', cust_id);
+            res.status(200).send("Customer created successfully");
+        }
+    });
+};
+
 //////////////////////////////////////////
 exports.customer_read =async(req,res)=>{
 
 console.log('Existing  cookie in controller:', req.cookies.userId)
 const sql = 'select * from customer where cust_id =	? '
-  mydata.query(sql , ['cust004'],(error, result, field)=>{
+  mydata.query(sql , [req.cookies.userId],(error, result, field)=>{
       if(error) throw error;
       // console.log(result)
       res.send(result);
@@ -16,7 +48,9 @@ const sql = 'select * from customer where cust_id =	? '
 
 //////////////////////////////////////////
 exports.application =async(req,res)=>{
-    mydata.query("select * from Application where cust_id ='CUST004' ",(error, result, field)=>{
+  const sql = 'select * from customer where cust_id =	? '
+
+    mydata.query(sql , ['CUST004'],(error, result, field)=>{
         if(error) throw error;
         console.log(result)
         res.send(result);

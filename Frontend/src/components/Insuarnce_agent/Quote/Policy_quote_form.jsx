@@ -21,7 +21,7 @@ const Policy_quote_form = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(formData);
     setFormData({
@@ -35,6 +35,33 @@ const Policy_quote_form = () => {
       product_id: '',
       coverage_level: ''
     });
+
+    try {
+      const response = await fetch('/api/agentlayout/quote_create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Optionally handle success response
+        console.log(' data submitted successfully');
+
+        let json = await response.json();
+        // iternaryData.current = json;
+        // navigate('/agentlayout/customer');
+      } else {
+        // Optionally handle error response
+        console.error('Failed to submit  data');
+      }
+    } catch (error) {
+      console.error('Error occurred while submitting  data:', error);
+    }
+
+
+
   };
 
   return (
@@ -50,6 +77,7 @@ const Policy_quote_form = () => {
             onChange={handleChange}
             placeholder="Quote ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -58,6 +86,7 @@ const Policy_quote_form = () => {
             onChange={handleChange}
             placeholder="Application ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -66,6 +95,7 @@ const Policy_quote_form = () => {
             onChange={handleChange}
             placeholder="Customer ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="datetime-local"
@@ -74,6 +104,7 @@ const Policy_quote_form = () => {
             onChange={handleChange}
             placeholder="Issue Date"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="datetime-local"
@@ -82,6 +113,7 @@ const Policy_quote_form = () => {
             onChange={handleChange}
             placeholder="Valid From Date"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="datetime-local"
@@ -90,6 +122,7 @@ const Policy_quote_form = () => {
             onChange={handleChange}
             placeholder="Valid Till Date"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -98,7 +131,9 @@ const Policy_quote_form = () => {
             onChange={handleChange}
             placeholder="Description"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
+          
           <input
             type="text"
             name="product_id"
@@ -106,6 +141,7 @@ const Policy_quote_form = () => {
             onChange={handleChange}
             placeholder="Product ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -114,6 +150,7 @@ const Policy_quote_form = () => {
             onChange={handleChange}
             placeholder="Coverage Level"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
         </div>
 

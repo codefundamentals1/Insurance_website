@@ -1,30 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 
 
 
 const Incident_agent = () => {
   const [incidents, setIncidents] = useState([
-    {
-      INCIDENT_ID: 'INC001',
-      INCIDENT_TYPE: 'Accident',
-      INCIDENT_DATE: '2024-04-01',
-      DESCRIPTION: 'Car accident on highway'
-    },
-    {
-      INCIDENT_ID: 'INC002',
-      INCIDENT_TYPE: 'Theft',
-      INCIDENT_DATE: '2024-04-05',
-      DESCRIPTION: 'Stolen vehicle from parking lot'
-    },
-    {
-      INCIDENT_ID: 'INC003',
-      INCIDENT_TYPE: 'Vandalism',
-      INCIDENT_DATE: '2024-04-10',
-      DESCRIPTION: 'Broken windows and scratches on vehicle'
-    }
+    // {
+    //   INCIDENT_ID: 'INC001',
+    //   INCIDENT_TYPE: 'Accident',
+    //   INCIDENT_DATE: '2024-04-01',
+    //   DESCRIPTION: 'Car accident on highway'
+    // },
+    // {
+    //   INCIDENT_ID: 'INC002',
+    //   INCIDENT_TYPE: 'Theft',
+    //   INCIDENT_DATE: '2024-04-05',
+    //   DESCRIPTION: 'Stolen vehicle from parking lot'
+    // },
+    // {
+    //   INCIDENT_ID: 'INC003',
+    //   INCIDENT_TYPE: 'Vandalism',
+    //   INCIDENT_DATE: '2024-04-10',
+    //   DESCRIPTION: 'Broken windows and scratches on vehicle'
+    // }
   ]);
+  useEffect( ()=> {
+    axios.get('/api/agentlayout/incident_read')
+    .then((response) => {
+      setIncidents(response.data)
+      
+
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , [])
+
+
+
 
   return (
     <div className="container mx-auto p-4">

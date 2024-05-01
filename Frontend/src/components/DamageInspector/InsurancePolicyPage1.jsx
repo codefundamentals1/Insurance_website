@@ -36,25 +36,25 @@ const InsurancePolicyPage1 = () => {
   ]
 
 
-  const [policies, setPolicies] = useState(tempdata);
+  const [policies, setPolicies] = useState([]);
   const [loading, setLoading] = useState(true);
 
-//   useEffect(() => {
-//     // Fetch insurance policies data from the backend API
-//     const fetchPolicies = async () => {
-//       try {
-//         // Replace 'your-backend-api-url' with your actual backend API URL
-//         const response = await fetch('your-backend-api-url');
-//         const data = await response.json();
-//         setPolicies(data);
-//         setLoading(false);
-//       } catch (error) {
-//         console.error('Error fetching insurance policies data:', error);
-//       }
-//     };
+  useEffect(() => {
+    // Fetch insurance policies data from the backend API
+    const fetchPolicies = async () => {
+      try {
+        // Replace 'your-backend-api-url' with your actual backend API URL
+        const response = await fetch('/api/inspectorlayout/insuracepolicypage1');
+        const data = await response.json();
+        setPolicies(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching insurance policies data:', error);
+      }
+    };
 
-//     fetchPolicies();
-//   }, []);
+    fetchPolicies();
+  }, []);
 
   return (
     <div className="container mx-auto mt-10">

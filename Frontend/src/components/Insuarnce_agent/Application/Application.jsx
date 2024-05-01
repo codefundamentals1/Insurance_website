@@ -1,12 +1,8 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
-
-
-
-
+import axios from 'axios';
 
 
 
@@ -16,45 +12,44 @@ const Application = () => {
 
 
   const [applications, setApplications] = useState([
-    {
-      application_id: 'APP001',
-      cust_id: 'CUST001',
-      vehicle_id: 'VEH001',
-      application_status: 'accepted',
-      coverage: 'Full coverage'
-    },
-    {
-      application_id: 'APP002',
-      cust_id: 'CUST002',
-      vehicle_id: 'VEH002',
-      application_status: 'pending',
-      coverage: 'Basic coverage'
-    },
-    {
-      application_id: 'APP003',
-      cust_id: 'CUST003',
-      vehicle_id: 'VEH003',
-      application_status: 'rejected',
-      coverage: 'No coverage'
-    }
+    // {
+    //   application_id: 'APP001',
+    //   cust_id: 'CUST001',
+    //   vehicle_id: 'VEH001',
+    //   application_status: 'accepted',
+    //   coverage: 'Full coverage'
+    // },
+    // {
+    //   application_id: 'APP002',
+    //   cust_id: 'CUST002',
+    //   vehicle_id: 'VEH002',
+    //   application_status: 'pending',
+    //   coverage: 'Basic coverage'
+    // },
+    // {
+    //   application_id: 'APP003',
+    //   cust_id: 'CUST003',
+    //   vehicle_id: 'VEH003',
+    //   application_status: 'rejected',
+    //   coverage: 'No coverage'
+    // }
   ]);
 
     // Function to fetch application data from the backend
-//   const fetchApplications = async () => {
-//     try {
-//       const response = await axios.get('/api/applications'); // Replace '/api/applications' with your backend endpoint
-//       setApplications(response.data);
-//     } catch (error) {
-//       console.error('Error fetching applications:', error);
-//     }
-//   };
-
-//   // Fetch application data when component mounts
-//   useEffect(() => {
-//     fetchApplications();
-//   }, []);
-
+    useEffect( ()=> {
+      axios.get('/api/agentlayout/application_read')
+      .then((response) => {
+          setApplications(response.data)
+        
   
+      } )
+      .catch( (error) => {
+        console.log(error )
+  
+      } )
+    } , [])
+  
+    
 return (
   <div className="container mx-auto p-4">
     <h1 className="text-3xl font-bold mb-4">Application Details</h1>

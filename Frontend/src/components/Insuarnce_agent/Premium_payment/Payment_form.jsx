@@ -18,7 +18,7 @@ const Payment_form = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(formData);
     setFormData({
@@ -29,6 +29,32 @@ const Payment_form = () => {
       premium_payment_amount: '',
       receipt_id: ''
     });
+    
+    try {
+      const response = await fetch('/api/agentlayout/payment_create', {
+        method: 'POST',
+        headers: {  
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Optionally handle success response
+        console.log(' data submitted successfully');
+
+        let json = await response.json();
+        // iternaryData.current = json;
+        // navigate('/agentlayout/customer');
+      } else {
+        // Optionally handle error response
+        console.error('Failed to submit  data');
+      }
+    } catch (error) {
+      console.error('Error occurred while submitting  data:', error);
+    }
+
+
   };
 
   return (
@@ -36,7 +62,7 @@ const Payment_form = () => {
       <h1 className="text-3xl font-bold mb-4">Add New Premium Payment</h1>
 
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 gap-4">  
           <input
             type="text"
             name="premium_payment_id"
@@ -44,6 +70,7 @@ const Payment_form = () => {
             onChange={handleChange}
             placeholder="Premium Payment ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -52,6 +79,7 @@ const Payment_form = () => {
             onChange={handleChange}
             placeholder="Customer ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -60,14 +88,16 @@ const Payment_form = () => {
             onChange={handleChange}
             placeholder="Policy Number"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
-            type="text"
+            type="date"
             name="premium_payment_schedule"
             value={formData.premium_payment_schedule}
             onChange={handleChange}
             placeholder="Premium Payment Schedule"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="number"
@@ -76,6 +106,7 @@ const Payment_form = () => {
             onChange={handleChange}
             placeholder="Premium Payment Amount"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -84,6 +115,7 @@ const Payment_form = () => {
             onChange={handleChange}
             placeholder="Receipt ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
         </div>
 

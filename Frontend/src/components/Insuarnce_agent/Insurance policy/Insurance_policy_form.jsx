@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Insurance_policy_form = () => {
   const [formData, setFormData] = useState({
-    agreement_id: '',
+    aggrement_id: '',
     application_id: '',
     cust_id: '',
     department_name: '',
@@ -18,13 +18,17 @@ const Insurance_policy_form = () => {
       ...formData,
       [name]: value
     });
+
+  
+
+
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(formData);
     setFormData({
-      agreement_id: '',
+      aggrement_id: '',
       application_id: '',
       cust_id: '',
       department_name: '',
@@ -33,6 +37,31 @@ const Insurance_policy_form = () => {
       expiry_date: '',
       term_condition_description: ''
     });
+
+    try {
+      const response = await fetch('/api/agentlayout/policy_create', {
+        method: 'POST',
+        headers: {  
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Optionally handle success response
+        console.log(' data submitted successfully');
+
+        let json = await response.json();
+        // iternaryData.current = json;
+        // navigate('/agentlayout/customer');
+      } else {
+        // Optionally handle error response
+        console.error('Failed to submit  data');
+      }
+    } catch (error) {
+      console.error('Error occurred while submitting  data:', error);
+    }
+
   };
 
   return (
@@ -43,11 +72,12 @@ const Insurance_policy_form = () => {
         <div className="grid grid-cols-1 gap-4">
           <input
             type="text"
-            name="agreement_id"
-            value={formData.agreement_id}
+            name="aggrement_id"
+            value={formData.aggrement_id}
             onChange={handleChange}
             placeholder="Agreement ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -56,6 +86,7 @@ const Insurance_policy_form = () => {
             onChange={handleChange}
             placeholder="Application ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -64,6 +95,7 @@ const Insurance_policy_form = () => {
             onChange={handleChange}
             placeholder="Customer ID"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -72,6 +104,7 @@ const Insurance_policy_form = () => {
             onChange={handleChange}
             placeholder="Department Name"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -80,22 +113,27 @@ const Insurance_policy_form = () => {
             onChange={handleChange}
             placeholder="Policy Number"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
+          <p>Start Date </p>
           <input
-            type="datetime-local"
+            type="date"
             name="start_date"
             value={formData.start_date}
             onChange={handleChange}
-            placeholder="Start Date"
+            placeholder="Start Date"  
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
+          <p>Expiry Date </p>
           <input
-            type="datetime-local"
+            type="date"
             name="expiry_date"
             value={formData.expiry_date}
             onChange={handleChange}
             placeholder="Expiry Date"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
           <input
             type="text"
@@ -104,6 +142,7 @@ const Insurance_policy_form = () => {
             onChange={handleChange}
             placeholder="Term Condition Description"
             className="border border-gray-300 rounded px-3 py-2 w-full"
+            required
           />
         </div>
 

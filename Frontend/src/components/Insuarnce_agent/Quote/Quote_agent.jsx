@@ -1,43 +1,58 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 const Quote_agent= () => {
   const [quotes, setQuotes] = useState([
-    {
-      quote_id: 'QUOTE001',
-      application_id: 'APP001',
-      cust_id: 'CUST001',
-      issue_date: '2024-01-01T00:00:00Z',
-      valid_from_date: '2024-01-01T00:00:00Z',
-      valid_till_date: '2024-02-01T00:00:00Z',
-      description: 'Sample quote description 1',
-      product_id: 'PROD001',
-      coverage_level: 'Basic coverage'
-    },
-    {
-      quote_id: 'QUOTE002',
-      application_id: 'APP002',
-      cust_id: 'CUST002',
-      issue_date: '2024-02-01T00:00:00Z',
-      valid_from_date: '2024-02-01T00:00:00Z',
-      valid_till_date: '2024-03-01T00:00:00Z',
-      description: 'Sample quote description 2',
-      product_id: 'PROD002',
-      coverage_level: 'Full coverage'
-    },
-    {
-      quote_id: 'QUOTE003',
-      application_id: 'APP003',
-      cust_id: 'CUST003',
-      issue_date: '2024-03-01T00:00:00Z',
-      valid_from_date: '2024-03-01T00:00:00Z',
-      valid_till_date: '2024-04-01T00:00:00Z',
-      description: 'Sample quote description 3',
-      product_id: 'PROD003',
-      coverage_level: 'Premium coverage'
-    }
+    // {
+    //   quote_id: 'QUOTE001',
+    //   application_id: 'APP001',
+    //   cust_id: 'CUST001',
+    //   issue_date: '2024-01-01T00:00:00Z',
+    //   valid_from_date: '2024-01-01T00:00:00Z',
+    //   valid_till_date: '2024-02-01T00:00:00Z',
+    //   description: 'Sample quote description 1',
+    //   product_id: 'PROD001',
+    //   coverage_level: 'Basic coverage'
+    // },
+    // {
+    //   quote_id: 'QUOTE002',
+    //   application_id: 'APP002',
+    //   cust_id: 'CUST002',
+    //   issue_date: '2024-02-01T00:00:00Z',
+    //   valid_from_date: '2024-02-01T00:00:00Z',
+    //   valid_till_date: '2024-03-01T00:00:00Z',
+    //   description: 'Sample quote description 2',
+    //   product_id: 'PROD002',
+    //   coverage_level: 'Full coverage'
+    // },
+    // {
+    //   quote_id: 'QUOTE003',
+    //   application_id: 'APP003',
+    //   cust_id: 'CUST003',
+    //   issue_date: '2024-03-01T00:00:00Z',
+    //   valid_from_date: '2024-03-01T00:00:00Z',
+    //   valid_till_date: '2024-04-01T00:00:00Z',
+    //   description: 'Sample quote description 3',
+    //   product_id: 'PROD003',
+    //   coverage_level: 'Premium coverage'
+    // }
   ]);
+
+  useEffect( ()=> {
+    axios.get('/api/agentlayout/quote_read')
+    .then((response) => {
+      setQuotes(response.data)
+      
+
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , [])
+
 
   return (
     <div className="container mx-auto p-4">

@@ -1,40 +1,57 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const ClaimAgent = () => {
   const [claims, setClaims] = useState([
-    {
-      claim_id: 'CLAIM001',
-      cust_id: 'CUST001',
-      agreement_id: 'AGREEMENT001',
-      claim_amount: 1000,
-      incident_id: 'INC001',
-      damage_type: 'Collision',
-      date_of_claim: '2024-04-25',
-      claim_status: 'pending'
-    },
-    {
-      claim_id: 'CLAIM002',
-      cust_id: 'CUST002',
-      agreement_id: 'AGREEMENT002',
-      claim_amount: 1500,
-      incident_id: 'INC002',
-      damage_type: 'Fire',
-      date_of_claim: '2024-04-26',
-      claim_status: 'accepted'
-    },
-    {
-      claim_id: 'CLAIM003',
-      cust_id: 'CUST003',
-      agreement_id: 'AGREEMENT003',
-      claim_amount: 2000,
-      incident_id: 'INC003',
-      damage_type: 'Theft',
-      date_of_claim: '2024-04-27',
-      claim_status: 'rejected'
-    }
+    // {
+    //   claim_id: 'CLAIM001',
+    //   cust_id: 'CUST001',
+    //   agreement_id: 'AGREEMENT001',
+    //   claim_amount: 1000,
+    //   incident_id: 'INC001',
+    //   damage_type: 'Collision',
+    //   date_of_claim: '2024-04-25',
+    //   claim_status: 'pending'
+    // },
+    // {
+    //   claim_id: 'CLAIM002',
+    //   cust_id: 'CUST002',
+    //   agreement_id: 'AGREEMENT002',
+    //   claim_amount: 1500,
+    //   incident_id: 'INC002',
+    //   damage_type: 'Fire',
+    //   date_of_claim: '2024-04-26',
+    //   claim_status: 'accepted'
+    // },
+    // {
+    //   claim_id: 'CLAIM003',
+    //   cust_id: 'CUST003',
+    //   agreement_id: 'AGREEMENT003',
+    //   claim_amount: 2000,
+    //   incident_id: 'INC003',
+    //   damage_type: 'Theft',
+    //   date_of_claim: '2024-04-27',
+    //   claim_status: 'rejected'
+    // }
   ]);
+
+  useEffect( ()=> {
+    axios.get('/api/agentlayout/claim_read')
+    .then((response) => {
+      setClaims(response.data)
+      
+
+    } )
+    .catch( (error) => {
+      console.log(error )
+
+    } )
+  } , [])
+
+
+
 
   return (
     <div className="container mx-auto p-4">
@@ -57,11 +74,11 @@ const ClaimAgent = () => {
             <p>Date of Claim: {claim.date_of_claim}</p>
             <p>Claim Status: {claim.claim_status}</p>
             <div className=''>
-             <button className="bg-green-300 hover:bg-green-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 m-2">Accept</button>
-            
-             <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50  m-2">Reject</button>
-             <button className="bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50  m-2">Delete</button>
+             {/* <button className="bg-green-300 hover:bg-green-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 m-2">Edit</button> */}
+             <button className="bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50  m-2">Edit</button>
           
+             <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50  m-2">Delete</button>
+            
             </div>
           </div>
         ))}
