@@ -46,6 +46,7 @@ const Payment_form = () => {
         let json = await response.json();
         // iternaryData.current = json;
         // navigate('/agentlayout/customer');
+        alert("Payment succesful");
       } else {
         // Optionally handle error response
         console.error('Failed to submit  data');

@@ -7,8 +7,8 @@ const LoginBoxes = () => {
     <div className="container mx-auto mt-8 flex justify-center">
       {/* Consumer Login */}
       <div className="w-1/3 p-8 border border-gray-300 rounded-lg mr-4">
-  <h2 className="text-xl font-semibold mb-4">Cusutomer</h2>
-  <p className="text-gray-600 mb-4">Login as an custmer .</p>
+  <h2 className="text-xl font-semibold mb-4">Customer</h2>
+  <p className="text-gray-600 mb-4">Login as an customer .</p>
   <div className="flex flex-col space-y-4">
     <Link to="/customer/login">
       <a href="/customer/login" className="text-blue-500 hover:text-blue-700 font-semibold">Login</a>
@@ -25,7 +25,7 @@ const LoginBoxes = () => {
       {/* Insurance Agent Login */}
       <div className="w-1/3 p-8 border border-gray-300 rounded-lg mr-4">
   <h2 className="text-xl font-semibold mb-4">Insurance Agent</h2>
-  <p className="text-gray-600 mb-4">Login as an insurance agent to manage policies for your clients.</p>
+  <p className="text-gray-600 mb-4">Login as an insurance agent to manage  your clients.</p>
   <div className="flex flex-col space-y-4">
     <Link to="/agent/login">
       <a href="/agent/login" className="text-blue-500 hover:text-blue-700 font-semibold">Login</a>
@@ -42,7 +42,7 @@ const LoginBoxes = () => {
       {/* Damage Inspector Login */}
       <div className="w-1/3 p-8 border border-gray-300 rounded-lg mr-4">
   <h2 className="text-xl font-semibold mb-4">Damage inspector</h2>
-  <p className="text-gray-600 mb-4">Login as an Damage inspector agent to manage policies for your clients.</p>
+  <p className="text-gray-600 mb-4">Login as an Damage inspector agent to manage reports incident of your clients.</p>
   <div className="flex flex-col space-y-4">
     <Link to="/inspector/login">
       <a href="/inspector/login" className="text-blue-500 hover:text-blue-700 font-semibold">Login</a>

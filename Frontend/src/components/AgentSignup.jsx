@@ -54,7 +54,7 @@ const AgentSignup = () => {
 
   return (
     <div className="container mx-auto mt-8 min-h-screen justify-items-center" >
-      <h1 className="text-2xl font-bold mb-4">Agent Signup </h1>
+      <h1 className="text-2xl font-bold mb-4">Agent Sign up </h1>
       <form onSubmit={handleSubmit} className="max-w-sm">
         <div className="mb-4">
           <label htmlFor="username" className="block text-gray-700 font-semibold mb-2">Username</label>
@@ -65,7 +65,7 @@ const AgentSignup = () => {
           <input type="password" id="password" value={password} onChange={handlePasswordChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required />
         </div>
         
-        <button type="submit" className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600">Signup</button>
+        <button type="submit" className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600">Sign up</button>
 
       </form>
     </div>

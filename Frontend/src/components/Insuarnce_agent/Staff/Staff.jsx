@@ -71,13 +71,13 @@ const Staff= () => {
             <p>Qualification: {staff.staff_qualification}</p>
             <p>Allowance: {staff.staff_allowance}</p>
             <p>PPS Number: {staff.staff_pps_number}</p>
-            <div className=''>
+            {/* <div className=''>
              <button className="bg-green-300 hover:bg-green-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 m-2">Accept</button>
             
              <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50  m-2">Reject</button>
              <button className="bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50  m-2">Delete</button>
           
-            </div>
+            </div> */}
           </div>
         ))}
       </div>

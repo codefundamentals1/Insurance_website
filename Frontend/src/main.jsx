@@ -104,6 +104,7 @@ import Payment_form from "./components/Insuarnce_agent/Premium_payment/Payment_f
 import Vehicle_form from "./components/Insuarnce_agent/Vehicle_agent/Vehicle_form.jsx";
 import Claim_settlement_form from "./components/Insuarnce_agent/Claim settlement/Claim_settlement_form.jsx";
 import Incident_formagent from "./components/Insuarnce_agent/Incident/Incident_formagent.jsx";
+import Homeuser from "./components/user/Homeuser.jsx";
 
 /// creating routers.///////////////////////////////////////////////////
 
@@ -137,7 +138,7 @@ const router = createBrowserRouter(
       {/*//////////////////   user route  customer route   ////////////////////*/}
 
       <Route path="userlayout" element={<UserLayout />}>
-        <Route path="" element={<Customer_form />} />
+        <Route path="" element={<Homeuser />} />
         <Route path="Customerform" element={<Customer_form />} />
         <Route path="incidentform" element={<Incident_form />} />
         <Route path="application" element={<ApplicationRead />} />

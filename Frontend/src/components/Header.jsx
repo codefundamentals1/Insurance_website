@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom'
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 const auth = localStorage.getItem("user");
+import Image from '../Images/image.png';
 
 
 export default function Header() {
@@ -13,7 +14,7 @@ export default function Header() {
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <Link to="/" className="flex items-center">
                         <img
-                            src="https://alexharkness.com/wp-content/uploads/2020/06/logo-2.png"
+                            src={Image}
                             className="mr-3 h-12"
                             alt="Logo"
                         />

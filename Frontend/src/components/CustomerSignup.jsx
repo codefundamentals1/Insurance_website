@@ -46,7 +46,7 @@ const CustomerSignup = () => {
 
   return (
     <div className="container mx-auto mt-8 min-h-screen justify-items-center">
-      <h1 className="text-2xl font-bold mb-4">Customer Login</h1>
+      <h1 className="text-2xl font-bold mb-4">Customer signup</h1>
       <form onSubmit={handleSubmit} className="max-w-sm">
         <div className="mb-4">
           <label htmlFor="username" className="block text-gray-700 font-semibold mb-2">Username</label>

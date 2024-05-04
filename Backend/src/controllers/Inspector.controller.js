@@ -22,7 +22,7 @@ const db = require('../db/config')
                 const insid = 'select id from inspector where username = ? '
                 db.query(insid , [username] , (err,result)=>{
                  console.log('result:', result);
-                 res.cookie('userId', result[0].id);
+                //  res.cookie('userId', result[0].id);
                  return res.status(200).json({ id: result[0].id });
                 })
             } else {

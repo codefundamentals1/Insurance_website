@@ -30,7 +30,7 @@ exports.incident1 =async(req,res)=>{
 
     console.log('Existing  cookie in controller:', req.cookies.userId)
     const sql = '  SELECT* FROM incident'
-    
+      
       mydata.query(sql ,(error, result, field)=>{
           if(error) throw error;
           // console.log(result)

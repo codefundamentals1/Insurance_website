@@ -22,8 +22,14 @@ function Sidepanel() {
           <Offcanvas.Title>Customer</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-        
+         
           <ul className="px-4" onClick={handleClose}>
+          <Link to ='/userlayout'>
+            <li className="py-1">
+              <a href="#" className="text-gray-800 hover:text-blue-500">Home</a>
+            </li>
+            </Link>
+
             <Link to ='/userlayout/Customerform'>
             <li className="py-1">
               <a href="#" className="text-gray-800 hover:text-blue-500">Customer</a>

@@ -48,9 +48,9 @@ const sql = 'select * from customer where cust_id =	? '
 
 //////////////////////////////////////////
 exports.application =async(req,res)=>{
-  const sql = 'select * from customer where cust_id =	? '
+  const sql = 'select * from Application where cust_id =	? '
 
-    mydata.query(sql , ['CUST004'],(error, result, field)=>{
+    mydata.query(sql , [req.cookies.userId],(error, result, field)=>{
         if(error) throw error;
         console.log(result)
         res.send(result);
